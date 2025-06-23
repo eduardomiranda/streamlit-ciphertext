@@ -39,10 +39,20 @@ def decrypt(ciphertext):
 
 if __name__ == "__main__":
 
-	st.title("Ciphertext")
+	st.title("🔐 Ciphertext")
 
-	operacoes = ("Criptografar", "Descriptografar")
-	operacao = st.radio("Escolha a operação.", operacoes )
+	chave_default = st.checkbox("Utilizar valor chave default?", value=True)
+
+	if not chave_default:
+		col11, col12, col3 = st.columns(3)
+		with col11:
+			n = st.number_input('Insira o valor da chave (n)', value=123, step=1)
+
+
+	options = ["Criptografar", "Descriptografar"]
+	default = options[1]
+	operacao = st.pills("", options=options, selection_mode="single", default=default)
+
 
 	textos = st.text_area('Strings')
 
@@ -54,9 +64,9 @@ if __name__ == "__main__":
 
 			processado = None
 
-			if operacao == operacoes[0]:
+			if operacao == options[0]:
 				processado = encrypt( texto )
-			elif operacao == operacoes[1]:
+			elif operacao == options[1]:
 				processado = decrypt( texto )
 
 			data['Original'].append(texto)
