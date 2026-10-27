@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ciphertext</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>🔐 Ciphertext</h1>
+
+    <p id="aviso" class="aviso" hidden>
+      Alfabeto da cifra não configurado. Preencha <code>key</code> e <code>n</code> em <code>config.js</code>.
+    </p>
+
+    <label class="check">
+      <input type="checkbox" id="chave-default" checked>
+      Utilizar valor chave default?
+    </label>
+
+    <div id="n-field" class="field" hidden>
+      <label for="n">Insira o valor da chave (n)</label>
+      <input type="number" id="n" value="123" step="1">
+    </div>
+
+    <div class="pills" role="group" aria-label="Operação">
+      <button type="button" class="pill" data-op="Criptografar" aria-pressed="false">Criptografar</button>
+      <button type="button" class="pill" data-op="Descriptografar" aria-pressed="true">Descriptografar</button>
+    </div>
+
+    <div class="field">
+      <label for="textos">Strings</label>
+      <textarea id="textos" rows="6"></textarea>
+    </div>
+
+    <button type="button" id="processar" class="btn">Processar</button>
+
+    <div class="table-wrap">
+      <table id="resultado" hidden>
+        <thead><tr><th></th><th>Original</th><th>Processado</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
